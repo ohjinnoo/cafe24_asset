@@ -1,0 +1,16 @@
+{
+  "ecmaVersion": 5,
+  "libs": [
+    "ecma5",
+    "browser",
+    "jquery"
+  ],
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "jquery-ui1-12": {
+      
+    }
+  }
+}

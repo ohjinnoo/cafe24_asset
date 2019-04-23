@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="emp">
+  <select id="list" resultType="empVo">
+    	select 
+    	e.employeeNumber as empNo,
+    	e.name as name,
+    	(select DTL_C_NM from CMCDDTLM c where c.GRP_C='division' and c.DTL_C=division) as division,
+    	(select DTL_C_NM from CMCDDTLM c1 where c1.GRP_C='position' and c1.DTL_C=position) as position,
+        e.division as dcode,
+        e.position as pcode,
+        e.gender,
+        e.joinDate,
+        e.status,
+        e.manager,
+        (select auth from manager m where m.empNo=e.employeeNumber) as auth,
+        e.email,
+        e.office,
+        e.seat,
+        e.profile_name
+        from employee e
+        <where>
+        	<if test="search!=null and search!='' and keyword!=null and keyword!=''">
+	        	<choose>
+	        		<when test="keyword=='name'">
+	        			${keyword} like concat('%',#{search},'%')
+	        		</when>
+	        		<otherwise>
+	        			${keyword}=#{search}
+	        		</otherwise>
+	        	</choose>
+        	</if>
+        </where>
+        <choose>
+        	<when test="sortBy!= null and sortBy!=''">
+        	order by ${sortBy} ${direction}
+        	</when>
+        	<otherwise>
+        	order by joindate asc
+        	</otherwise>
+        </choose>
+        <if test="limit!=0">
+         limit ${page},${limit}
+        </if>
+       
+  </select>
+  <select id="detail" resultType="empVo">
+  	select employeeNumber as empNo,
+  	name as userName,
+  	division,
+  	position,
+  	gender,
+  	joinDate
+  	from employee where name=#{userName}
+  </select>
+  <insert id="insert">
+  	insert into employee values(#{empNo},#{name},#{division},#{position},#{gender},#{joinDate},'y',#{email},'n',#{office},#{seat},null)
+  </insert>
+  <update id="update">
+  	update employee set division=#{division},position=#{position},status=#{status},manager=#{manager},office=#{office},seat=#{seat} where employeeNumber=#{empNo}
+  </update>
+  <delete id="delete">
+  	delete from employee where employeeNumber=#{empNo}
+  </delete>
+  <select id="count" resultType="int">
+  	select count(*) from employee
+  	<where>
+        	<if test="search!=null and search!='' and keyword!=null and keyword!=''">
+	        	<choose>
+	        		<when test="keyword=='name'">
+	        			${keyword} like concat('%',#{search},'%')
+	        		</when>
+	        		<otherwise>
+	        			${keyword}=#{search}
+	        		</otherwise>
+	        	</choose>
+        	</if>
+        </where>
+  </select>
+  <update id="mgt">
+  	update employee set manager='n' where employeeNumber=#{empNo}
+  </update>
+  <select id="exiManager" resultType="String">
+  	select manager from employee where employeeNumber=#{empNo}
+  </select>
+  <select id="mgrList" resultType="String">
+  	select name from employee where name like concat('%',#{mgr},'%') 
+  	<if test="division!=null and division!=''">
+  	and division=#{division}
+  	</if>	
+  </select>
+  <select id="seatCount" resultType="seatDto">
+  	SELECT division as dCode,count(*) count,office,DTL_C_NM division 
+  	FROM 
+  		employee e, CMCDDTLM c 
+  	where 
+  		e.division=c.DTL_C and c.GRP_C='division' and seat like '%n%' 
+  	group by division order by office desc ; 
+  </select>
+  
+  <update id="updateImg">
+  	update employee set profile_name=#{profile_name} where employeeNumber=#{empNo}
+  </update>
+</mapper>

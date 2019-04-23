@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <typeAliases>
+  	<!-- 자산 -->
+  	<typeAlias type="com.asset.vo.AssetVo" alias="assetVo"/>
+  	<typeAlias type="com.asset.vo.AssetViewDto" alias="assetViewDto"/>
+  	<typeAlias type="com.asset.vo.AssetDto" alias="assetDto"/>
+  	<typeAlias type="com.asset.vo.AssetDownDto" alias="assetDownDto"/>
+  	<typeAlias type="com.asset.vo.ChartDto" alias="chartDto"/>
+  	<!-- 관리자 -->
+  	<typeAlias type="com.asset.vo.AssetSearchDto" alias="assetSearchDto"/>
+  	<typeAlias type="com.core.vo.ManagerVo" alias="managerVo"/>
+  	<!-- 사용자 -->
+  	<typeAlias type="com.emp.vo.EmpDto" alias="empDto"/>
+  	<typeAlias type="com.emp.vo.EmpVo" alias="empVo"/>
+  	<typeAlias type="com.emp.vo.SeatDto" alias="seatDto"/>
+  	
+  	<!-- 입사현황 -->
+  	<typeAlias type="com.calendar.vo.CalendarVo" alias="calendarVo"/>
+  	
+  	<!-- Common -->
+  	<typeAlias type="com.core.vo.CommonVo" alias="commonVo"/>
+  	<typeAlias type="com.core.vo.CmcdGrpmVo" alias="cmcdGrpmVo"/>
+  	<typeAlias type="com.core.vo.CmcdGrpmDto" alias="cmcdGrpmDto"/>
+  	<typeAlias type="com.core.vo.CmcdDtlmVo" alias="cmcdDtlmVo"/>
+  	<typeAlias type="com.core.vo.CmcdDtlmDto" alias="cmcdDtlmDto"/>
+  	
+  	
+  </typeAliases>
+</configuration>
