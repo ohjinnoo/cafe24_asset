@@ -194,8 +194,9 @@ body {
 		if("${map.cmcdGrpm}"!=''){
 			$("#btnDl").show();
 		}
-		
-		
+		/**
+		*공통 자식 코드 등록 C,수정 U,삭제 
+		*/
 		$("#btnUpd").on('click', function() {
 		 	if($("#vldStC").val()=="C"){
 				$("#grpC").val($("#tGrpC").val());

@@ -14,7 +14,7 @@
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
 
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -27,13 +27,14 @@
     <script src="${pageContext.request.contextPath}/js/home.js" type="text/javascript"></script>
     <script type="text/javascript">
 	    
-	    
+	   //권한 체크 
 		$(function(){
 	    	
 	    	if("${mgr.auth}"==0){
 	 			$("#requestBt").remove();
 	 			$("#setCommon").remove();
 	 		}
+	   //해당 부서가 아니면 입사 관리 창 숨김
 	    	if("${mgr.dCode}"!=7){
 	    		$("#calendar").hide();
 	    	}

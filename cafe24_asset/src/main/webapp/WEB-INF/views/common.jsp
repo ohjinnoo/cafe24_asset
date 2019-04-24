@@ -90,7 +90,10 @@
 			</div>
 	</section>
 	<script type="text/javascript">
+	//페이징 처리 
 	var row = 1;
+	
+	//공통 코드 검색
 	function dataSearch(){
 		
 		var data = $("#searchForm").serializeObject()

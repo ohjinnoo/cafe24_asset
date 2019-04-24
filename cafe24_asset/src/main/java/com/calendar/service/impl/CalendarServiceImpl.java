@@ -37,7 +37,7 @@ public class CalendarServiceImpl implements CalendarService {
 		// TODO Auto-generated method stub
 		return dao.selectLst();
 	}
-
+	//입사일정 등록시 확인 메일
 	@Override
 	public Map<String, Object> insCalendarRgt(CalendarVo vo,ManagerDto manager) throws Exception {
 		// TODO Auto-generated method stub
@@ -48,7 +48,8 @@ public class CalendarServiceImpl implements CalendarService {
 		vo.setFstRgtWkrNm(manager.getmName());
 		vo.setLstMdfWkrNm(manager.getmName());
 		//DateUtillity.calendarFormat(vo);
-		dao.insertCal(vo); 
+		dao.insertCal(vo);
+		//입사일정 등록시 관리자에게 확인 메일
 		String subject = "GA_System";
 		String content = "<html><body><div style= 'width:500;border:solid #fffff;}'><h2>신규입사자 안내 메일</h2><table border='1'><tr><td style='width:200px;'><b>등록자</b></td><td>"+manager.getmName()+"</td></tr>"
 				+ "<tr><td><b>입사예정일</b></td><td>"+vo.getStart()+"</td></tr>"
@@ -60,7 +61,7 @@ public class CalendarServiceImpl implements CalendarService {
 						"	    	<img src='https://stcom.image-gmkt.com/css/us/qoo10/front/cm/common/image/logo_qoo10_main.png'>" + 
 						"	    	</div></div></body></html>";
 		
-			emailSendService.emailSendProc(subject, content, "ga_kr@qoo10.com",list,manager.getmName(), "system");
+			emailSendService.emailSendProc(subject, content, "dhwlsdn741@gmail.com",list,manager.getmName(), "system");
 		
 		
 		
@@ -115,6 +116,7 @@ public class CalendarServiceImpl implements CalendarService {
 		dto.setId(manager.getmName());
 		List<String> list = mDao.selectManagerId();	
 		eDao.insert(vo);
+		//입사 확정시 관리자에게 확인 메일
 		if(dao.updateJoin(dto)>0) {
 			
 			
@@ -130,7 +132,7 @@ public class CalendarServiceImpl implements CalendarService {
 							"	    	</div></div></body></html>";
 			
 				
-			emailSendService.emailSendProc(subject, content, "ga_kr@qoo10.com",list,manager.getmName(), "system");
+			emailSendService.emailSendProc(subject, content, "dhwlsdn741@gmail.com",list,manager.getmName(), "system");
 		}
 					
 		return map;

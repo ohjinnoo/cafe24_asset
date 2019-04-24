@@ -98,18 +98,19 @@ var popup;
 		var n13_count_tag = '';
 		var n3_seatNo = 21;		
 		var n13_seatNo = 17;
+		//사무실 레이아웃 작성
 		function seatGrid() {
 			var n3_tag='';
 			var n13_tag='';
 				
 		//n3
-				//GAF 헤드석
+				
 				n3_tag +='<div class="seat1 seat n3" style="left:135px;top:15px" id="n30001"></div>';
 				n3_tag +='<div class="seat1 seat n3" style="left:240px;top:15px" id="n30002"></div>';
 				n3_tag +='<div class="seat1 seat n3" style="left:310px;top:15px" id="n30003"></div>';
 				n3_tag +='<div class="seat1 seat n3" style="left:365px;top:15px" id="n30004"></div>';
 				
-				//엽업 부서 헤드석
+				
 				n3_tag +='<div class="seat1 seat n3" style="left:25px;top:810px" id="n30005"></div>';
 				n3_tag +='<div class="seat2 seat n3" style="left:175px;top:865px" id="n30006"></div>';
 				n3_tag +='<div class="seat1 seat n3" style="left:215px;top:865px" id="n30007"></div>';//40
@@ -171,12 +172,12 @@ var popup;
 				n3_tag +='<div class="seat2 seat n3" style="left:445px;top:330px" id="n30162"></div>';
 		//n13
 			
-			//tech 헤드석
+			
 			n13_tag +='<div class="seat2 seat n13" style="left:30px;top:55px" id="n130001"></div>';
 			
 			
 			var y3= 45;
-			//tech 부서자리
+			
 			for(var i=0;i<7;i++){
 				var x= 100;
 				
@@ -185,7 +186,7 @@ var popup;
 					n13_tag += '<div class="seat1 seat n13" style="left:'+x+'px;top:'+y3+'px"  id="n13'+divIdAssign('n13')+'"></div>';
 					x += 55;
 				}
-				//tech 헤드석
+				
 				if(i>1 && i<6){
 					n13_tag += '<div class="seat1 seat n13" style="left:15px;top:'+y3+'px"  id="n13'+divIdAssign('n13')+'"></div>';
 				}
@@ -195,7 +196,7 @@ var popup;
 					y3 +=75;
 				}
 			}
-			//헤드석
+			
 			n13_tag +='<div class="seat1 seat n13" style="left:235px;top:865px" id="n130002"></div>';
 			n13_tag +='<div class="seat1 seat n13" style="left:325px;top:865px" id="n130003"></div>';
 			n13_tag +='<div class="seat1 seat n13" style="left:380px;top:865px" id="n130004"></div>';
@@ -253,6 +254,7 @@ var popup;
 			$("#N13F").append(n13_tag);
 			
 		}
+		//id값 부여
 		function divIdAssign(floors) {
 			var str = '';
 			var length = 4;
@@ -277,6 +279,7 @@ var popup;
 		
 		seatGrid();
 		
+		//해당 좌석 사용 확인
 		function seatData(){
 			var data = {"search":''}
 			var dataStr = JSON.stringify(data);
@@ -369,7 +372,7 @@ var popup;
 			}
 		}
 		
-		
+		//상위 사이트 확인 후 타입별 이벤트
 		$(".seat").on('click', function() {
 			 
 			 

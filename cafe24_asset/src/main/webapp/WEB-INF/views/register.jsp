@@ -29,6 +29,7 @@
 			var assetNo;
 			//var mInch = $('<tr height="22" id="inch"><td class="tdBack" align="left" width="15%"><strong class="list_title">종류</strong></td><td align="left">&nbsp;<select class="SelectBox" id="mInch" name="mInch"><option value="">선택하세요</option><option value="0">none</option><option value="1">17인치</option><option value="2">19인치</option><option value="3">24인치</option><option value="4">27인치</option></select></td></tr>');
 			var url='/register/proc';
+			//등록,수정 확인
 			if("${vo.assetNo}"!=""){
 				
 				$("#category").val("${vo.category}").prop("selected", true);
@@ -67,7 +68,7 @@
 				}
 				if(category==''){
 					$("#assetNo").val("");
-				}else{
+				}else{//자산 다음번호 확인
 					$.ajax({
 						url:"/assetNoSearch/proc",
 						dataType:"json",
@@ -98,10 +99,10 @@
 			})
 			
 			
-			
+			//폐기로 취급
 			$("#deleteBt").click(function() {
 				var url = "/delete/proc";
-				if($("#status").val()=="d"){
+				if($("#status").val()=="d"){//폐기타입이면 테이블 삭제
 					var result = confirm('Are you sure?'); 
 					
 					if(!result) { 
@@ -183,7 +184,7 @@
 						$.empSearch();
 				}
 			})
-			
+			//자산 사원과 매핑
 			$.empSearch = function(){
 				
 				var data = {"userName":$("#userName").val()};

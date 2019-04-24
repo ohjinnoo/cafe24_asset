@@ -23,7 +23,7 @@
 <script type="text/javascript">
 	google.charts.load("current", {packages:["corechart"]});
 	
-	
+	//구글 차트 api
      function drawChart(keyword) {
 			var category = keyword
 			var data = new google.visualization.DataTable();
@@ -65,7 +65,7 @@
      $(function(){
     	 
     	 google.charts.setOnLoadCallback(drawChart);
-    	 
+    	 //타입별 버튼 클릭시 타입별 자산 그래프 확인
  		$("input:radio[name=keyword]").click(function() {
  		   google.charts.setOnLoadCallback(drawChart($(this).val()));
  	   })
