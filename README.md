@@ -22,4 +22,8 @@
 - Jquery
 - Jquery-ui
 
+### 배포환경
+- jenkins
+- svn
+
 ## 스크린샷
