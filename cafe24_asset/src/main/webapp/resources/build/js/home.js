@@ -89,6 +89,14 @@
 				
 				popup(url, title, x, y);
 			})
+			$("#mail").click(function() {
+				var x = 500;
+				var y = 670;
+				var url = '/mail';
+				var title = 'Mail Send';
+				
+				popup(url, title, x, y);
+			})
 			
 			$("input[type='text']").keypress(function(e){
     			if (e.which == 13) {

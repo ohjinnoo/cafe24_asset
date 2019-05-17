@@ -12,7 +12,7 @@
 <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <style type="text/css">
@@ -106,7 +106,7 @@ body {
 									id="btnDl" style="display: none;">
 									<i class="fa fa-close"></i> 삭제
 								</button>
-								<button type="button" class="btn btn-success" name="btnUpd"
+								<button type="button" class="btn btn-primary" name="btnUpd"
 									id="btnUpd">
 									<i class="fa fa-check"></i> 저장
 								</button>
@@ -174,7 +174,7 @@ body {
 									id="btnReSearch">
 									<i class="fa fa-refresh"></i> 초기화
 								</button>
-								<button type="button" class="btn btn-success" name="btnSv"
+								<button type="button" class="btn btn-primary" name="btnSv"
 									id="btnSvSubC">
 									<i class="fa fa-check"></i> 저장
 								</button>
@@ -194,9 +194,8 @@ body {
 		if("${map.cmcdGrpm}"!=''){
 			$("#btnDl").show();
 		}
-		/**
-		*공통 자식 코드 등록 C,수정 U,삭제 
-		*/
+		
+		
 		$("#btnUpd").on('click', function() {
 		 	if($("#vldStC").val()=="C"){
 				$("#grpC").val($("#tGrpC").val());
@@ -212,7 +211,7 @@ body {
 				data:dataStr
 			}).done(function(data) {
 			 
-				if(data.msg="0000"){
+				if(data.msg=="0001"){
 					if($("#vldStC").next().is("input")){
 						$("#vldStC").val("U");
 						$("#vldStC").after('<p class="form-control-static">'+$("#tGrpC").val()+'</p>');
@@ -230,19 +229,18 @@ body {
 			})
 		});
 		$("#btnDl").click(function() {
+			alert($("#vldStC").next().html());
 			var data = {"grpC":$("#vldStC").next().html()},dataStr = JSON.stringify(data);
-			if(data!=''){
-				
-			}
+			
 			$.ajax({
 				url:"<c:url value='/common/delete/proc'/>",
-				contentType:"application/json; charset=utf-8",
+				//contentType:"application/json; charset=utf-8",
 				dataType:"json",
 				method:"post",
 				data:dataStr
 			}).done(function(data) {
 			 
-				if(data.msg="0000"){
+				if(data.msg=="0001"){
 					alert("Request Success");
 					location.href='/common'
 				}else{

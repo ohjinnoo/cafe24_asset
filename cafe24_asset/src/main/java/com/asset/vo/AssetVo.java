@@ -17,6 +17,7 @@ public class AssetVo {
 	private String status;
 	private int price;
 	private String note;
+	
 	/**최초등록작업자이름*/
 	private String fstRgtWkrNm;
 	/**최초등록일시*/

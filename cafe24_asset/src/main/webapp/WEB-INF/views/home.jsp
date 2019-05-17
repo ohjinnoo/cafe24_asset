@@ -12,8 +12,6 @@
    	<meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -88,6 +86,9 @@
 	            </li>
 	            <li>
 	                <a id="seatSearch" title="좌석"><span class="glyphicon glyphicon-map-marker na" style="color: white; font-size:large;"></span></a>
+	            </li>
+	            <li>
+	                <a id="mail" title="메일"><span class="glyphicon glyphicon-envelope na" style="color: white; font-size:large;"></span></a>
 	            </li>
 	            <li>
 	                <a id="empSearch"  title="사원 검색"><span class="glyphicon glyphicon-user na" style="color: white; font-size:large;"></span></a>
@@ -224,7 +225,7 @@
 									<table align="right" style="width:100px;margin-bottom:10px;" class="no-bordered">					
 										<tbody><tr><td align="right"><input type="button" class="btn bg-navy btn-sm" id="requestBt" name="requestBt" value="New Request" alt="New Request"></td></tr>
 									</tbody></table>
-								</div><!--  list box end -->
+								</div>
 							</div>
 						</div>
 					</div>
