@@ -33,12 +33,17 @@ public class ManagerController {
 	@Inject
 	private ManagerService service;
 	
-	@RequestMapping(value = {"/","/login"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String home(Locale locale,HttpSession session)throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		if(session.getAttribute("mgr") != null)
 			session.removeAttribute("mgr");
 		return "login";
+	}
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String port(Locale locale)throws Exception {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		return "portfolio";
 	}
 	
 	@RequestMapping(value="/login/proc",method=RequestMethod.POST)
